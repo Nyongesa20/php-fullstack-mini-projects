@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Manager</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+
+<body>
+
+    <header>
+        <span>📋</span>
+        <h1>Task Manager</h1>
+        <span>Developed by Meshack Nyongesa</span>
+    </header>
+
+    <div class="layout">
+
+        <!-- ── Left column: Create + Report ── -->
+        <aside>
+
+            <!-- Create Task -->
+            <div class="card">
+                <h2>➕ New Task</h2>
+                <form id="taskForm" autocomplete="off">
+
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input id="title" name="title" type="text" placeholder="e.g. Fix login bug" maxlength="255" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="due_date">Due Date</label>
+                        <input id="due_date" name="due_date" type="date" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="priority">Priority</label>
+                        <select id="priority" name="priority" required>
+            <option value="high">🔴 High</option>
+            <option value="medium" selected>🟡 Medium</option>
+            <option value="low">🟢 Low</option>
+          </select>
+                    </div>
+
+                    <button class="btn btn-primary btn-full" id="submitBtn" type="submit">
+          ＋ Add Task
+        </button>
+                </form>
+            </div>
+
+            <!-- Daily Report -->
+            <div class="card">
+                <h2>📊 Daily Report</h2>
+                <div class="form-group">
+                    <label for="reportDate">Select Date</label>
+                    <input id="reportDate" type="date" />
+                </div>
+                <button class="btn btn-primary btn-full" id="reportBtn">
+        Generate Report
+      </button>
+                <hr class="section-hr" />
+                <div id="reportOutput"></div>
+            </div>
+
+        </aside>
+
+        <!-- ── Right column: Task list ── -->
+        <main>
+            <div class="card" style="margin-bottom:0">
+                <h2>📋 Tasks</h2>
+
+                <!-- Filter buttons -->
+                <div class="filters">
+                    <label>Filter:</label>
+                    <button class="filter-btn active" data-status="all">All</button>
+                    <button class="filter-btn" data-status="pending">Pending</button>
+                    <button class="filter-btn" data-status="in_progress">In Progress</button>
+                    <button class="filter-btn" data-status="done">Done</button>
+                </div>
+
+                <!-- Task cards injected here by JS -->
+                <div id="taskList">
+                    <div class="empty-state">
+                        <div class="icon">⏳</div>
+                        Loading tasks…
+                    </div>
+                </div>
+            </div>
+        </main>
+
+    </div>
+
+    <!-- Toast notification -->
+    <div id="toast"></div>
+
+    <script src="assets/js/app.js"></script>
+</body>
+
+</html>
